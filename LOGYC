@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOJYC S.A. DE C.V. - Soluciones Logísticas Integrales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Variables de color basadas en diseño corporativo logístico */
+        :root {
+            --primary-color: #0b2031; /* Azul marino muy oscuro */
+            --secondary-color: #1a4971; /* Azul corporativo */
+            --accent-color: #d32f2f; /* Rojo/Naranja de acento */
+            --light-bg: #f4f6f8;
+            --text-color: #333333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+        
+        .top-bar a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        /* Header / Navegación */
+        header {
+            background-color: var(--white);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-rastreo {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .btn-rastreo:hover {
+            background-color: #b71c1c;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(11, 32, 49, 0.8), rgba(11, 32, 49, 0.8)), url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero h2 {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+
+        /* Secciones Generales */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+        }
+
+        /* Nosotros / Historia */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .about-card {
+            background: var(--light-bg);
+            padding: 40px;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* Valores */
+        .valores {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .valores .section-title {
+            color: var(--white);
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .valor-card {
+            background: rgba(255,255,255,0.05);
+            padding: 40px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .valor-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Servicios Especializados */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .servicio-card {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .servicio-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .servicio-card ul {
+            list-style: none;
+        }
+
+        .servicio-card ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .servicio-card ul li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Compromiso / Cita */
+        .compromiso {
+            background-color: var(--light-bg);
+            text-align: center;
+            padding: 60px 5%;
+            font-style: italic;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Footer / Contacto */
+        footer {
+            background-color: #05131d;
+            color: #a0aab2;
+            padding: 60px 5% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-grid, .servicios-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .valores-grid {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none; /* Simplificado para móvil */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra superior de contacto -->
+    <div class="top-bar">
+        <div>📍 México</div>
+        <div>
+            📞 55 2917 4347 | 33 4529 8118
+            <a href="mailto:trafico_1@logisticavisers.com">✉️ trafico_1@logisticavisers.com</a>
+        </div>
+    </div>
+
+    <!-- Navegación principal -->
+    <header>
+        <div class="logo">LOJ<span>YC</span></div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Quiénes Somos</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="#contacto" class="btn-rastreo">RASTREAR CARGAMENTO</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h1>Soluciones Logísticas Integrales</h1>
+        <h2>LOJYC S.A. DE C.V.</h2>
+        <p>Tu socio comercial para el éxito. Innovación y experiencia en cada paso de su cadena de suministro.</p>
+    </section>
+
+    <!-- Quiénes Somos y Trayectoria -->
+    <section class="section" id="nosotros">
+        <h2 class="section-title">Nuestra Trayectoria</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>03 Fundación</h3>
+                <p>Establecidos en 2015, nacimos con el propósito de transformar la gestión logística a través de procesos eficientes y tecnología de punta.</p>
+            </div>
+            <div class="about-card">
+                <h3>Consolidación</h3>
+                <p>A lo largo de los años, nos hemos consolidado gracias a un equipo altamente calificado y una red global de socios estratégicos.</p>
+            </div>
+            <div class="about-card">
+                <h3>Nuestra Misión</h3>
+                <p>Brindar soluciones integrales que superen las expectativas, comprometidos con la excelencia operativa y la satisfacción total del cliente a nivel global.</p>
+            </div>
+            <div class="about-card">
+                <h3>Nuestra Visión</h3>
+                <p>Consolidarnos como líderes internacionales en logística 3PL, optimizando cadenas de suministro mediante alianzas estratégicas de alto valor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="section valores">
+        <h2 class="section-title">Nuestros Valores</h2>
+        <div class="valores-grid">
+            <div class="valor-card">
+                <h3>Calidad</h3>
+                <p>Compromiso constante con normas internacionales para superar las expectativas del mercado.</p>
+            </div>
+            <div class="valor-card">
+                <h3>Comunicación</h3>
+                <p>Flujo de información transparente y preciso para construir vínculos sólidos y duraderos.</p>
+            </div>
+            <div class="valor-card">
+                <h3>Compromiso</h3>
+                <p>Orientación total al cliente, priorizando la satisfacción y la mejora continua.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Especializados -->
+    <section class="section" id="servicios">
+        <h2 class="section-title">Servicios Especializados</h2>
+        <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Facilitamos su operación con soluciones 360°.</p>
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <h3>🚛 Transporte y Almacenaje</h3>
+                <ul>
+                    <li><strong>Transporte Terrestre:</strong> Cobertura nacional e internacional con unidades de última generación.</li>
+                    <li><strong>Almacenaje:</strong> Gestión estratégica de inventarios y distribución eficiente.</li>
+                    <li><strong>Distribución:</strong> Entregas puntuales optimizando costos operativos.</li>
+                </ul>
+            </div>
+            <div class="servicio-card">
+                <h3>🌐 Comercio Exterior</h3>
+                <ul>
+                    <li><strong>Servicio Aduanal:</strong> Despacho ágil de mercancías ante las autoridades correspondientes.</li>
+                    <li><strong>Asesoría Integral:</strong> Consultoría experta en normatividad y comercio internacional.</li>
+                    <li><strong>Clasificación Arancelaria:</strong> Precisión técnica para el cumplimiento legal.</li>
+                </ul>
+            </div>
+            <div class="servicio-card">
+                <h3>🛡️ Seguridad y Rastreo</h3>
+                <ul>
+                    <li><strong>Disponibilidad 24/7:</strong> Rastreo y monitoreo constante.</li>
+                    <li><strong>GPS en Tiempo Real:</strong> Todas nuestras unidades cuentan con tecnología de localización satelital.</li>
+                    <li><strong>Servicio de Custodia:</strong> Máxima protección para su mercancía de alto valor.</li>
+                    <li><strong>Seguros:</strong> Pólizas integrales para mercancía y contenedores.</li>
+                </ul>
+            </div>
+            <div class="servicio-card">
+                <h3>⚖️ Gestión Legal</h3>
+                <p>Expertos en la gestión de trámites ante dependencias clave:</p>
+                <ul style="margin-top: 15px;">
+                    <li>Trámites ante AGACE.</li>
+                    <li>Certificados PROFEPA / SEMARNAT.</li>
+                    <li>Cumplimiento normativo total.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cita de Compromiso -->
+    <section class="compromiso">
+        "El éxito de nuestro servicio solo se logra con la plena satisfacción y el éxito empresarial de nuestros clientes."
+        <div style="font-size: 1rem; margin-top: 15px; color: var(--text-color); font-style: normal;">— Equipo Directivo LOJYC</div>
+    </section>
+
+    <!-- Footer / Contacto -->
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>LOJYC S.A. DE C.V.</h4>
+                <p>Innovación y experiencia en cada paso de su cadena de suministro.</p>
+            </div>
+            <div class="footer-col">
+                <h4>¿Listos para colaborar?</h4>
+                <p>Contáctenos hoy mismo y optimicemos su operación logística.</p>
+                <p>📍 México</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p>📞 55 2917 4347</p>
+                <p>📞 33 4529 8118</p>
+                <p>✉️ <a href="mailto:trafico_1@logisticavisers.com">trafico_1@logisticavisers.com</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 LOJYC S.A. DE C.V. - Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
